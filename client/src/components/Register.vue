@@ -1,11 +1,23 @@
 <template>
-  <div>
-    <h1>Register</h1>
-    <input type="email" name="email" v-model="email" placeholder="email"></br>
-    <input type="password" name="password" v-model="password" placeholder="password"><br>
-    <div class="error" v-html="error" />
-    <button @click="register">Register</button>
-  </div>
+  <el-row type="flex" :gutter="20" justify="space-around"> 
+   <el-col :span="6">
+    <el-card>
+      <div>
+        <h1>Create an account</h1>
+        <el-input type="email" name="name" placeholder="Enter your email" suffix-icon="el-icon-mail" v-model="email">
+        <template slot="prepend">@</template>  
+        </el-input><br>
+        <div style="margin-top: 10px;">
+          <el-input type="password" name="password" placeholder="Enter your Password" suffix-icon="el-icon-setting" v-model="password"></el-input><br>
+        </div>
+        <div style="margin-top: 10px;">
+          <el-button type="primary" @click="register">Register</el-button>
+        </div>
+        <p class="error" v-html="error" />
+      </div>
+    </el-card>
+   </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -15,7 +27,8 @@ export default {
     return {
       email: '',
       password: '',
-      error: null
+      error: null,
+      success: ''
     }
   },
   methods: {
@@ -34,6 +47,17 @@ export default {
 </script>
 
 <style scoped>
+body {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.autom {
+  margin: auto;
+}
+
+.success {
+  color: green;
+}
 .error {
   color: red;
 }
